@@ -7,6 +7,16 @@ public class Good {
     private Double price;
     private String pic;//上传的商品文件名称
 
+    public Integer getAmount() {
+        return amount;
+    }
+
+    public void setAmount(Integer amount) {
+        this.amount = amount;
+    }
+
+    private Integer amount;
+
     public Good() {
     }
 

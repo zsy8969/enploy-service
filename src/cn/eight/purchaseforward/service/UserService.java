@@ -4,5 +4,7 @@ import cn.eight.purchaseforward.pojo.User;
 
 public interface UserService {
 
-    boolean chexkUser(User user);
+    boolean registerUser(User user);
+    boolean checkUser(String username);
+    boolean login(User user);
 }

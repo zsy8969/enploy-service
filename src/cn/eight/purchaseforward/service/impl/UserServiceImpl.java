@@ -3,12 +3,27 @@ package cn.eight.purchaseforward.service.impl;
 import cn.eight.purchaseforward.dao.UserDao;
 import cn.eight.purchaseforward.pojo.User;
 import cn.eight.purchaseforward.service.UserService;
+import cn.eight.purchaseforward.util.Tools;
 
 public class UserServiceImpl implements UserService {
     private UserDao userDao = new UserDao();
 
+
     @Override
-    public boolean chexkUser(User user) {
-        return userDao.queryUser(user);
+    public boolean registerUser(User user) {
+        //对用户密码加密
+        user.setPassword(Tools.md5(user.getPassword()));
+        return userDao.insertUser(user);
+    }
+
+    @Override
+    public boolean checkUser(String username) {
+        return userDao.queryUserByUserName(username);
+    }
+
+    @Override
+    public boolean login(User user) {
+        user.setPassword(Tools.md5(user.getPassword()));
+        return userDao.queryLoginUser(user);
     }
 }
