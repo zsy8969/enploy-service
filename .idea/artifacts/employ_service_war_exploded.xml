@@ -1,0 +1,16 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="employ-service:war exploded">
+    <output-path>E:/java1/tomcat/apache-tomcat-8.5.50/webapps/employ-service</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="employ-service" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="lib" />
+        </element>
+      </element>
+      <element id="javaee-facet-resources" facet="employ-service/web/Web" />
+    </root>
+  </artifact>
+</component>

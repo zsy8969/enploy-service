@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/purchase-forward.iml" filepath="$PROJECT_DIR$/purchase-forward.iml" />
+      <module fileurl="file://$PROJECT_DIR$/employ-service.iml" filepath="$PROJECT_DIR$/employ-service.iml" />
     </modules>
   </component>
 </project>
