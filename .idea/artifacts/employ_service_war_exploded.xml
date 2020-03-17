@@ -1,6 +1,6 @@
 <component name="ArtifactManager">
   <artifact type="exploded-war" name="employ-service:war exploded">
-    <output-path>E:/java1/tomcat/apache-tomcat-8.5.50/webapps/employ-service</output-path>
+    <output-path>D:/tomcat/apache-tomcat-8.5.51/webapps/enploy-service</output-path>
     <root id="root">
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
