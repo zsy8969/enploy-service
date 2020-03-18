@@ -5,26 +5,27 @@ package cn.eight.employservice.pojo;
  * @create 2020-03-18 10:22
  */
 public class Sjzd {
-    private int id;
+    private Integer id;
     private String name;
     private String remarks;
-    private int sort;
+    private Integer sortInt;
+    private String sortStr;
 
     public Sjzd() {
     }
 
-    public Sjzd(int id, String name, String remarks, int sort) {
+    public Sjzd(Integer id, String name, String remarks, Integer sortInt) {
         this.id = id;
         this.name = name;
         this.remarks = remarks;
-        this.sort = sort;
+        this.sortInt = sortInt;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -44,11 +45,19 @@ public class Sjzd {
         this.remarks = remarks;
     }
 
-    public int getSort() {
-        return sort;
+    public Integer getSortInt() {
+        return sortInt;
     }
 
-    public void setSort(int sort) {
-        this.sort = sort;
+    public void setSortInt(Integer sortInt) {
+        this.sortInt = sortInt;
+    }
+
+    public String getSortStr() {
+        return sortStr;
+    }
+
+    public void setSortStr(String sortStr) {
+        this.sortStr = sortStr;
     }
 }

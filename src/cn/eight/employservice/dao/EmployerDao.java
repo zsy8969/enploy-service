@@ -1,7 +1,7 @@
 package cn.eight.employservice.dao;
 
 import cn.eight.employservice.pojo.Employer;
-import cn.eight.employservice.pojo.User;
+
 import cn.eight.employservice.util.DbPool;
 
 import java.sql.Connection;

@@ -76,7 +76,7 @@
                     <td nowrap align="left"><input type="checkbox" name="fid2" value="116910973085946883578"></td>
                     <td nowrap align="left">&nbsp;aa</td>
                     <td nowrap align="left">&nbsp;</td>
-                    <td nowrap align="left">&nbsp;<a href="xgsjzd.htm">修改</a> &nbsp;<a href="xxsjzd.htm">详细信息</a> </td>
+                    <td nowrap align="left">&nbsp;<a href="xgsjzd.jsp">修改</a> &nbsp;<a href="xxsjzd.htm">详细信息</a> </td>
                   </tr>
                   <tr class="td1"
 					 	onmouseover="javascript:changeBgColorOnMouseOver(this);"
@@ -85,7 +85,7 @@
                     <td nowrap align="left"><input type="checkbox" name="fid2" value="119934433978146208248"></td>
                     <td nowrap align="left">&nbsp;传阅件分类</td>
                     <td nowrap align="left">&nbsp;</td>
-                    <td nowrap align="left">&nbsp;<a href="xgsjzd.htm">修改</a> &nbsp;<a href="xxsjzd.htm">详细信息</a> </td>
+                    <td nowrap align="left">&nbsp;<a href="xgsjzd.jsp">修改</a> &nbsp;<a href="xxsjzd.htm">详细信息</a> </td>
                   </tr>
                   <tr class="td2"
 					 	onmouseover="javascript:changeBgColorOnMouseOver(this);"
@@ -94,7 +94,7 @@
                     <td nowrap align="left"><input type="checkbox" name="fid2" value="122697934721846826540"></td>
                     <td nowrap align="left">&nbsp;公共信息分类</td>
                     <td nowrap align="left">&nbsp;</td>
-                    <td nowrap align="left">&nbsp;<a href="xgsjzd.htm">修改</a> &nbsp;<a href="xxsjzd.htm">详细信息</a> </td>
+                    <td nowrap align="left">&nbsp;<a href="xgsjzd.jsp">修改</a> &nbsp;<a href="xxsjzd.htm">详细信息</a> </td>
                   </tr>
                   <tr class="td1"
 					 	onmouseover="javascript:changeBgColorOnMouseOver(this);"
@@ -103,7 +103,7 @@
                     <td nowrap align="left"><input type="checkbox" name="fid2" value="124158469803146669952"></td>
                     <td nowrap align="left">&nbsp;视频点播分类</td>
                     <td nowrap align="left">&nbsp;</td>
-                    <td nowrap align="left">&nbsp;<a href="xgsjzd.htm">修改</a> &nbsp;<a href="xxsjzd.htm">详细信息</a> </td>
+                    <td nowrap align="left">&nbsp;<a href="xgsjzd.jsp">修改</a> &nbsp;<a href="xxsjzd.htm">详细信息</a> </td>
                   </tr>
                   <tr class="td2"
 					 	onmouseover="javascript:changeBgColorOnMouseOver(this);"
@@ -112,7 +112,7 @@
                     <td nowrap align="left"><input type="checkbox" name="fid2" value="60407111615156"></td>
                     <td nowrap align="left">&nbsp;词条</td>
                     <td nowrap align="left">&nbsp;</td>
-                    <td nowrap align="left">&nbsp;<a href="xgsjzd.htm">修改</a> &nbsp;<a href="xxsjzd.htm">详细信息</a> </td>
+                    <td nowrap align="left">&nbsp;<a href="xgsjzd.jsp">修改</a> &nbsp;<a href="xxsjzd.htm">详细信息</a> </td>
                   </tr>
                 </table>
                 <table width="500"  border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#CBCBCB">

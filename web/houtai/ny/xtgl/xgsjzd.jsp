@@ -1,4 +1,5 @@
-
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 
 
@@ -7,7 +8,6 @@
 
  <script language="JavaScript">
  	scontext = "";
-	
  </script>
 <script type="text/javascript" src="../tdp/js/validator.js"></script>
 <script type="text/javascript" src="../tdp/js/calendar.js"></script>
@@ -18,11 +18,13 @@
 </head>
 
 <body>
-<form name="GroupForm" method="POST" action="/backmanage/group/list.do">
+<form name="GroupForm" method="POST" action="${pageContext.request.contextPath}/houtai/sjzdSvl?reqType=mod">
+    <input type="hidden" name="pageNow" value="${param.pageNow}">
+    <input type="hidden" name="id" value="${param.id}">
 <input type="hidden" name="mhd" value="doUpdate">
 <table width="100%"  border="1" cellpadding="0" cellspacing="0" bordercolor="#FFFFFF" class="where">
   <tr>
-    <td>&nbsp;&nbsp;¡ù&nbsp;ÄúµÄÎ»ÖÃ£ºÎÒµÄ×ÀÃæ--&gt;ÏµÍ³¹ÜÀí--&gt;Êý¾Ý×Öµä</td>
+    <td>&nbsp;&nbsp;â€»&nbsp;æ‚¨çš„ä½ç½®ï¼šæˆ‘çš„æ¡Œé¢--&gt;ç³»ç»Ÿç®¡ç†--&gt;æ•°æ®å­—å…¸</td>
   </tr>
 </table>
 <table width="100%" height="10"  border="0" cellpadding="0" cellspacing="0">
@@ -37,7 +39,7 @@
         <tr>
           <td><table height="23"  border="0" cellpadding="0" cellspacing="0">
               <tr align="center">
-                <td width="82" class="Column_blue">ÐÞ¸Ä</td>
+                <td width="82" class="Column_blue">ä¿®æ”¹</td>
               </tr>
           </table></td>
         </tr>
@@ -53,43 +55,43 @@
           <td> </td>
         </tr>
       </table>
+
 	  <table width="96%" style="TABLE-LAYOUT: fixed;" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#Cbcbcb">
 	   <!-- <tr class="td2">
-          <td align="center" nowrap colspan="4">ÐÂÔöÄÚ²¿¹æÕÂÖÆ¶ÈÀàÐÍ</td>
+          <td align="center" nowrap colspan="4">æ–°å¢žå†…éƒ¨è§„ç« åˆ¶åº¦ç±»åž‹</td>
         </tr>-->
 
 		<tr class="td2">
-          <td width="20%" align="right" nowrap>Àà±ðÃû³Æ£º</td>
+          <td width="20%" align="right" nowrap>ç±»åˆ«åç§°ï¼š</td>
       <td width="80%" colspan="3">
-				<input name="vo.name" type="text" class="input" value="av" maxlength="125" ValidateType="notempty" Msg="»ú¹¹Ãû³Æ²»ÄÜÎª¿Õ!">
+				<input name="vo.name" type="text" class="input" value="${param.name}" maxlength="125" ValidateType="notempty" Msg="æœºæž„åç§°ä¸èƒ½ä¸ºç©º!">
 			  <font color=red>*</font>
 		  </td>
         </tr>
 <input type="hidden" name="vo.principalUser" value="">
 		<!--	<tr class="td2">
-          <td width="20%" align="right" nowrap>¸ºÔðÈË£º</td>
+          <td width="20%" align="right" nowrap>è´Ÿè´£äººï¼š</td>
           <td width="30%" colspan="3">
 
 <input type="text" name="pusername" Class="input">
 <input type="hidden" name="deptFlag" value="-1">
-<input name="receiver" type="button" class="button_new" value="Ñ¡ÔñÈËÔ±" elname="vo.principalUser,pusername" onClick="selectMailMan()">
+<input name="receiver" type="button" class="button_new" value="é€‰æ‹©äººå‘˜" elname="vo.principalUser,pusername" onClick="selectMailMan()">
 		  </td>
         </tr>-->
 		<tr class="td2">
-          <td width="20%" align="right" nowrap>ÊÇ·ñÌá¹©ÈËÔ±Ñ¡Ôñ£º</td>
+          <td width="20%" align="right" nowrap>æ˜¯å¦æä¾›äººå‘˜é€‰æ‹©ï¼š</td>
         <td width="80%" colspan="3" style="LEFT: 0px; WIDTH: 100%; WORD-WRAP: break-word;"><input name="checkbox" type="checkbox" id="checkbox" checked>		  </td>
         </tr> 
         
         <tr class="td2">
-          <td width="20%" align="right" nowrap>±¸×¢£º</td>
+          <td width="20%" align="right" nowrap>å¤‡æ³¨ï¼š</td>
           <td width="80%" colspan="3"><span style="LEFT: 0px; WIDTH: 100%; WORD-WRAP: break-word;">
-            <textarea name="vo.description" cols="70" rows="8"  maxlength="100" onFocus="javascript:setMaxLen()">ÇëÊäÈë±¸×¢</textarea>
+            <textarea name="vo.description" cols="70" rows="8"  maxlength="100" onFocus="javascript:setMaxLen()">${param.remarks}</textarea>
           </span></td>
         </tr>
-
-
-
 	  </table>
+
+
       <table width="500"  border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#CBCBCB"><tr></tr></table>
       <table width="96%" height="10"  border="0" align="center" cellpadding="0" cellspacing="0">
         <tr>
@@ -99,12 +101,13 @@
       <table width="96%" height="30"  border="0" align="center" cellpadding="0" cellspacing="0">
         <tr>
           <td align="center">
-<input type="submit" name="save" value="±£ ´æ" onClick="return validater(GroupForm)" class="button_new">
+                <input type="submit" name="save" value="ä¿ å­˜" onClick="return validater(GroupForm)" class="button_new">
 
-				<input name="B3" type="button" class="button_new" onClick="javascript:history.back()" value="ºó ÍË">
+				<input name="B3" type="button" class="button_new" onClick="javascript:history.back()" value="åŽ é€€">
 		  </td>
         </tr>
-      </table></td>
+      </table>
+    </td>
     <td width="15" bordercolor="#FFCC6D" background="../image/red_BODY_rightbg.gif">&nbsp;</td>
   </tr>
 </table>
@@ -153,12 +156,12 @@ function selectMailMan(){
 	var j =0;
 	for(var i=0;i<names.length;i=i+2){
 
-		values[j++] = frm.elements[names[i]].value;//idµÄÖµ
+		values[j++] = frm.elements[names[i]].value;//idçš„å€¼
 
 	}
     if(dept == 1){
          if(document.all["deptName"].value==""){
-	       alert("²¿ÃÅ»¹Ã»Ñ¡ÔñÄØ?²»ÄÜÎª¿Õ!");
+	       alert("éƒ¨é—¨è¿˜æ²¡é€‰æ‹©å‘¢?ä¸èƒ½ä¸ºç©º!");
 		   return;
 	}
 		values[values.length]=document.all["deptName"].value+"|"+document.all["deptID"].value;

@@ -1,4 +1,6 @@
 <link href="../css/index.css" rel="stylesheet" type="text/css">
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <style type="text/css">
 <!--
@@ -29,43 +31,45 @@ function doDBClick(url,operator,type) {
 
 <table width="100%"  border="0" cellpadding="0" cellspacing="0" bordercolor="#FFFFFF" class="where">
   <tr>
-    <td>&nbsp;&nbsp;¡ù&nbsp;ÄúµÄÎ»ÖÃ£ºÎÒµÄ×ÀÃæ--&gt;ÏµÍ³¹ÜÀí--&gt;¹«Ë¾¹ÜÀí</td>
+    <td>&nbsp;&nbsp;â€»&nbsp;æ‚¨çš„ä½ç½®ï¼šæˆ‘çš„æ¡Œé¢--&gt;ç³»ç»Ÿç®¡ç†--&gt;æ•°æ®å­—å…¸--&gt;æ–°å¢ž</td>
     <td align="right">&nbsp;</td>
   </tr>
 </table>
 <br/>
 <br>
+<form  action="${pageContext.request.contextPath}/houtai/sjzdSvl?reqType=add" method="post">
   <table width="96%" height="49" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#bdc7d3" class="text_lb">
     <tr>
-      <td width="157" height="23" align="right" bgcolor="#FFFFFF">Ãû³Æ£º</td>
-      <td width="435" bgcolor="#FFFFFF"><input name="textarea" type="text" id="textarea" value="" size="30" class="pi"></td>
-      <td width="176" align="right" bgcolor="#FFFFFF">ÀàÐÍ£º</td>
+      <td width="157" height="23" align="right" bgcolor="#FFFFFF">åç§°ï¼š</td>
+      <td width="435" bgcolor="#FFFFFF"><input name="name" type="text" id="textarea" value="" size="30" class="pi"></td>
+      <td width="176" align="right" bgcolor="#FFFFFF">ç±»åž‹ï¼š</td>
       <td width="509" bgcolor="#FFFFFF">
-      	<select name="">
-        	<option value="1">½ÌÓý³Ì¶È</option>
-            <option value="2">°®ºÃ</option>
-            <option value="3">ÓïÑÔ</option>
-            <option value="4">Ö¤ÕÕ×´¿ö</option>
-            <option value="5">Ìå¼ìÇé¿ö</option>
-            <option value="6">¸öÈË¼¼ÄÜ</option>
-            <option value="7">¹ÍÓÃÀàÐÍ</option>
+      	<select name="selectAdd">
+        	<option value="1">æ•™è‚²ç¨‹åº¦</option>
+            <option value="2">çˆ±å¥½</option>
+            <option value="3">è¯­è¨€</option>
+            <option value="4">è¯ç…§çŠ¶å†µ</option>
+            <option value="5">ä½“æ£€æƒ…å†µ</option>
+            <option value="6">ä¸ªäººæŠ€èƒ½</option>
+            <option value="7">é›‡ç”¨ç±»åž‹</option>
         </select>
       
       </td>
     </tr>
     <tr>
-      <td height="23" align="right" bgcolor="#FFFFFF">¼ò½é£º</td>
-      <td colspan="3" bgcolor="#FFFFFF"><textarea name="textarea7" id="textarea7" cols="45" rows="5"></textarea></td>
+      <td height="23" align="right" bgcolor="#FFFFFF">ç®€ä»‹ï¼š</td>
+      <td colspan="3" bgcolor="#FFFFFF"><textarea name="remarks" id="textarea7" cols="45" rows="5"></textarea></td>
     </tr>
   </table>
 <table width="96%" height="30" border="0" align="center" cellpadding="0" cellspacing="0" >
   <tr>
     <td width="67%" align="center" class="text" nowrap>
-    <input type="submit" name="searchbtn3" value="±£  ´æ" class="button_new" onClick="javascript:alert('±£´æ³É¹¦£¡');location.href='gsgl.htm';">
-      <input type="submit" name="searchbtn3" value="·µ  »Ø" class="button_new" onClick="javascript:location.href='gsgl.htm'" >
+    <input type="submit" name="searchbtn3" value="ä¿  å­˜" class="button_new">
+      <input type="button" name="searchbtn3" value="è¿”  å›ž" class="button_new" onClick=window.history.back() >
       <input type="hidden" name="mod" value="no">
     &nbsp;&nbsp; </td>
   </tr>
 </table>
+</form>
 </body>
 </html>

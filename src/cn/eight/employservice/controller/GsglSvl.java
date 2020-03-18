@@ -73,7 +73,7 @@ public class GsglSvl extends HttpServlet {
     //删除记录
     private void removeCompany(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String[] checkboxes = request.getParameterValues("checkbox2");
-        System.out.println(checkboxes.length);
+
         if (checkboxes==null){
             response.getWriter().print("<script>window.alert('请选择记录！');window.history.back()</script>");
             response.getWriter().flush();

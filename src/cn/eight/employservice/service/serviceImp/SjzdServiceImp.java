@@ -19,4 +19,29 @@ public class SjzdServiceImp implements SjzdService {
     public List<Sjzd> queryAllData(int pageNow,int pageSize) {
         return sjzdDao.queryAllData(pageNow,pageSize);
     }
+
+    @Override
+    public int findTotalRecord() {
+        return sjzdDao.totalRecord();
+    }
+
+    @Override
+    public List<Sjzd> queryDataByCritria(int sortInt) {
+        return sjzdDao.queryDataByCritria(sortInt);
+    }
+
+    @Override
+    public boolean addData(Sjzd date) {
+        return sjzdDao.addData(date);
+    }
+
+    @Override
+    public boolean removeData(String[] ids) {
+        return sjzdDao.removeData(ids);
+    }
+
+    @Override
+    public boolean modData(Sjzd datas) {
+        return sjzdDao.modData(datas);
+    }
 }
