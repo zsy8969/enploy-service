@@ -1,5 +1,8 @@
 package cn.eight.employservice.pojo;
 
+import cn.eight.employservice.service.GsglService;
+import cn.eight.employservice.service.serviceImp.GsglServiceImp;
+
 /**
  * @author 瞿琮
  * @create 2020-03-16 16:55
@@ -51,4 +54,13 @@ public class Company {
     public void setCompany_intro(String company_intro) {
         this.company_intro = company_intro;
     }
-}
+
+    //通过公司编号查询公司名称
+    public Company findCompanyById(int company_id){
+        GsglService gsglService=new GsglServiceImp();
+        Company companyById = gsglService.findCompanyById(company_id);
+        return companyById;
+    }
+
+
+    }

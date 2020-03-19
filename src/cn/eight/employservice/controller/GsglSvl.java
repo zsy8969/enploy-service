@@ -19,7 +19,7 @@ import java.util.List;
  * @author 瞿琮
  * @create 2020-03-16 17:01
  */
-@WebServlet(name = "GsglServlet",urlPatterns = "/houtai/gsglSvl",initParams = {@WebInitParam(name = "pageSize",value = "10")})
+@WebServlet(name = "GsglServlet",urlPatterns = "/houtai/gsglSvl",initParams = {@WebInitParam(name = "pageSize",value = "2")})
 public class GsglSvl extends HttpServlet {
 
     private GsglService gsglService= new GsglServiceImp();
@@ -91,23 +91,42 @@ public class GsglSvl extends HttpServlet {
                 response.getWriter().flush();
             }
         }
-
-
     }
+
 
     //按条件查询公司
     private void queryCompanyByCritria(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         String queryAccount = request.getParameter("queryAccount");
         String queryName = request.getParameter("queryName");
+        int pageNow = Integer.valueOf(request.getParameter("pageNow"));
+        if (pageNow<1){
+            pageNow=1;
+        }
+        //取出在本servlet的注释中写入了初始参数
+        int pageSize = Integer.valueOf(getServletConfig().getInitParameter("pageSize"));
 
-        List<Company> companyList = gsglService.queryCompanyByCritria(queryAccount, queryName);
+        List<Company> companyList = gsglService.queryCompanyByCritria(queryAccount, queryName,pageNow,pageSize);
+        //得到总记录数
+        int totalRecord = gsglService.findTotalRecord(queryAccount,queryName);
+        //总页数
+        int totalPages=0;
+        if (totalRecord%pageSize==0){
+            totalPages=totalRecord/pageSize;
+        }else {
+            totalPages=totalRecord/pageSize+1;
+        }
         if (companyList.isEmpty()){
             response.getWriter().print("<script>window.alert('无"+queryName+"该公司记录！');window.history.back()</script>");
             response.getWriter().flush();
         }else {
             request.setAttribute("companies",companyList);
-            request.getRequestDispatcher("ny/xtgl/gsgl.jsp").forward(request,response);
+            request.setAttribute("totalRecord",totalRecord);
+            request.setAttribute("totalPages",totalPages);
+            request.setAttribute("pageNow",pageNow);
+            request.setAttribute("queryAccount",queryAccount);
+            request.setAttribute("queryName",queryName);
+            request.getRequestDispatcher("ny/xtgl/gsgl_cx.jsp").forward(request,response);
         }
 
     }
@@ -129,7 +148,7 @@ public class GsglSvl extends HttpServlet {
 
         List<Company> companyList = gsglService.queryAllCompany(pageNow, pageSize);
         //得到总记录数
-        int totalRecord = gsglService.findTotalRecord();
+        int totalRecord = gsglService.findTotalRecord(null,null);
         //总页数
         int totalPages=0;
         if (totalRecord%pageSize==0){
@@ -137,9 +156,7 @@ public class GsglSvl extends HttpServlet {
         }else {
             totalPages=totalRecord/pageSize+1;
         }
-        if (pageNow>totalPages){//当下一页超过最后一页是不能再继续往后
-            pageNow=totalPages;
-        }
+
         request.setAttribute("companies",companyList);
         request.setAttribute("totalRecord",totalRecord);
         request.setAttribute("totalPages",totalPages);
@@ -161,7 +178,7 @@ public class GsglSvl extends HttpServlet {
             //取出在本servlet的注释中写入了初始参数
             int pageSize = Integer.valueOf(getServletConfig().getInitParameter("pageSize"));
             //得到总记录数
-            int totalRecord = gsglService.findTotalRecord();
+            int totalRecord = gsglService.findTotalRecord(null,null);
             //总页数
             int totalPages=0;
             if (totalRecord%pageSize==0){

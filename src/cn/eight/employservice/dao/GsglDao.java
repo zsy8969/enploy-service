@@ -74,9 +74,28 @@ public class GsglDao {
         return resultList;
     }
 
-    //得到总记录数
-    public int totalRecord(){
-        String sql="select count(*) from company";
+    //得到总记录数,分条件查询和无条件查询
+    public int totalRecord(String company_account, String company_name){
+        String sql;
+        if (company_account==null&&company_name==null){
+            sql="select count(*) from company";
+        }else {
+            sql="select count(*) from company";
+            String critria="";//查询条件语句
+            if (!company_account.trim().isEmpty()){
+                critria+="company_account='"+company_account+"'";
+            }
+
+            if (!company_name.trim().isEmpty()){
+                if (!critria.isEmpty()){
+                    critria+=" and company_name='"+company_name+"'";
+                }else {
+                    critria+="company_name='"+company_name+"'";
+                }
+            }
+            sql+=" where "+critria;
+        }
+
         Connection con = DbPool.getConnection();
         PreparedStatement pst=null;
         ResultSet rs =null;
@@ -95,15 +114,16 @@ public class GsglDao {
         return result;
     }
 
+
     //按条件查询公司
-    public List<Company> queryCompanyByCritria(String company_account, String company_name){
+    public List<Company> queryCompanyByCritria(String company_account, String company_name,int pageNow,int pageSize){
 
         List<Company> resultList=new ArrayList<>();
 
         String sql="select * from company";
         String critria="";//查询条件语句
         if (!company_account.trim().isEmpty()){
-            critria+="company_account="+company_account;
+            critria+="company_account='"+company_account+"'";
         }
 
         if (!company_name.trim().isEmpty()){
@@ -113,14 +133,14 @@ public class GsglDao {
                 critria+="company_name='"+company_name+"'";
             }
         }
-        sql+=" where "+critria;
+        sql+=" where "+critria+" limit ?,?";
 
         Connection con = DbPool.getConnection();
         PreparedStatement pst=null;
         ResultSet rs=null;
         try {
             pst = con.prepareStatement(sql);
-            rs = basicDao.execQuery(con, pst, null);
+            rs = basicDao.execQuery(con, pst, (pageNow-1)*pageSize,pageSize);
             while (rs!=null&&rs.next()){
                 Company company=new Company();//封装公司信息对象
                 company.setCompany_id(rs.getInt(1));
@@ -203,6 +223,33 @@ public class GsglDao {
             e.printStackTrace();
         }finally {
             basicDao.releaseResourse(null,pst,con);
+        }
+        return result;
+    }
+
+    //通过编号查询公司
+    public Company findCompanyById(int id){
+
+        Company result=new Company();
+
+        String sql="select * from company where company_id="+id;
+
+        Connection con = DbPool.getConnection();
+        PreparedStatement pst=null;
+        ResultSet rs=null;
+        try {
+            pst = con.prepareStatement(sql);
+            rs = basicDao.execQuery(con, pst, null);
+            while (rs!=null&&rs.next()){
+                result.setCompany_id(rs.getInt(1));
+                result.setCompany_account(rs.getString(2));
+                result.setCompany_name(rs.getString(3));
+                result.setCompany_intro(rs.getString(4));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            basicDao.releaseResourse(rs,pst,con);
         }
         return result;
     }

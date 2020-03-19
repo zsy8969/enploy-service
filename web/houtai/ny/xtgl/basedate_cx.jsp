@@ -20,9 +20,9 @@ function doDBClick(url,operator,type) {
         function gotoPage() {
             var page=document.getElementById("pageSelect").value;
             if (page != 0) {
-                window.location.href="${pageContext.request.contextPath}/houtai/sjzdSvl?reqType=queryAll&pageNow="+page;
+                window.location.href="${pageContext.request.contextPath}/houtai/sjzdSvl?reqType=queryByCritria&selectSort=${sortInt}&pageNow="+page;
             }else {
-                window.location.href="${pageContext.request.contextPath}/houtai/sjzdSvl?reqType=queryAll&pageNow="+${pageNow};
+                window.location.href="${pageContext.request.contextPath}/houtai/sjzdSvl?reqType=queryByCritria&selectSort=${sortInt}&pageNow="+${pageNow};
             }
         }
 
@@ -106,7 +106,7 @@ function doDBClick(url,operator,type) {
       <td width="38%" height="24" align="center" nowrap id=".name" ><div align="center" orderBy="true">类型</div></td>
       <td width="21%" align="center" nowrap id=".submit_date" ><strong>操作</strong></td>
     </tr>
-      <c:forEach items="${allDataList}" var="datas">
+      <c:forEach items="${datasList}" var="datas">
           <input type="hidden" name="remarks" value="${datas.remarks}"/>
     <tr align="center" class="td2"  onmouseover="javascript:changeBgColorOnMouseOver(this);" onMouseOut="javascript:changeBgColorOnMouseOut(this);" onDblClick="doDBClick('bl.htm',true,'2');">
       <td nowrap align="center" width="4%"><input value="${datas.id}" type="checkbox" name="checkbox2" id="checkbox2"></td>
@@ -127,10 +127,10 @@ function doDBClick(url,operator,type) {
               <td nowrap width="45%" align="center"> 当前第${pageNow}页 共${totalRecord}记录 分${totalPages}页显示 </td>
               <td nowrap width="55%" align="right"><input type="hidden" name="currentPage" value="1">
                   <input type="hidden" name="paginationAction" value="">
-                  <img src="../image/First_no.gif" alt="第一页" width="18" height="13" border="0" onclick="location.href='${pageContext.request.contextPath}/houtai/sjzdSvl?reqType=queryAll&pageNow=1'">&nbsp;&nbsp;&nbsp;
-                  <img src="../image/Previous_no.gif" alt="上一页" width="14" height="13" border="0" onclick="location.href='${pageContext.request.contextPath}/houtai/sjzdSvl?reqType=queryAll&pageNow=${pageNow-1}'">&nbsp;&nbsp;&nbsp;
+                  <img src="../image/First_no.gif" alt="第一页" width="18" height="13" border="0" onclick="location.href='${pageContext.request.contextPath}/houtai/sjzdSvl?reqType=queryByCritria&pageNow=1&selectSort=${sortInt}'">&nbsp;&nbsp;&nbsp;
+                  <img src="../image/Previous_no.gif" alt="上一页" width="14" height="13" border="0" onclick="location.href='${pageContext.request.contextPath}/houtai/sjzdSvl?reqType=queryByCritria&pageNow=${pageNow-1}&selectSort=${sortInt}'">&nbsp;&nbsp;&nbsp;
                   <img src="../image/Next_no.gif" alt="下一页" width="14" height="13" border="0" onclick="lastPage()">&nbsp;&nbsp;&nbsp;
-                  <img src="../image/Last_no.gif" alt="最后一页" width="18" height="13" border="0" onclick="location.href='${pageContext.request.contextPath}/houtai/sjzdSvl?reqType=queryAll&pageNow=${totalPages}'">&nbsp;&nbsp;&nbsp;
+                  <img src="../image/Last_no.gif" alt="最后一页" width="18" height="13" border="0" onclick="location.href='${pageContext.request.contextPath}/houtai/sjzdSvl?reqType=queryByCritria&pageNow=${totalPages}&selectSort=${sortInt}'">&nbsp;&nbsp;&nbsp;
                   <a href="javascript:gotoPage()">前往</a>
                   <input id="pageSelect" type=text size='4' onlytype='int' onfocus='checkTextBoxInput()' name='pageSelect' value=''/>页
               </td>
@@ -149,7 +149,7 @@ function doDBClick(url,operator,type) {
         if (pageNow == totalPages) {
             window.alert("最后一页了！");
         }else {
-            window.location.href="${pageContext.request.contextPath}/houtai/sjzdSvl?reqType=queryAll&pageNow=${pageNow+1}";
+            window.location.href="${pageContext.request.contextPath}/houtai/sjzdSvl?reqType=queryByCritria&pageNow=${pageNow+1}&selectSort=${sortInt}";
         }
     }
 </script>

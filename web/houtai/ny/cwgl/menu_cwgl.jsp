@@ -1,5 +1,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
@@ -109,8 +111,8 @@ body {
 <table width="100%"  border="0" align="center" cellpadding="0" cellspacing="0"  id="menutd">
   <tr>
     <td  width="14"   class="Menu_OutTd"  id="menutd1">&nbsp;</td>
-    <td  width="70" nowrap id="menubar_4"   class="Menu_OutTd">|<a href="sfgl.htm" target="main"> 收费管理</a></td>
-    <td  width="70" nowrap id="menubar_5"   class="Menu_OutTd">|<a href="bbcx.htm" target="main"> 消费管理</a></td>
+    <td  width="70" nowrap id="menubar_4"   class="Menu_OutTd">|<a href="sfgl.jsp" target="main"> 鏀惰垂绠＄悊</a></td>
+    <td  width="70" nowrap id="menubar_5"   class="Menu_OutTd">|<a href="${pageContext.request.contextPath}/houtai/xfglSvl?reqType=queryAll&pageNow=1" target="main"> 娑堣垂绠＄悊</a></td>
     <td width="676"  nowrap align="right" class="Menu_OutTd"  >&nbsp;</td>
   </tr>
 </table>

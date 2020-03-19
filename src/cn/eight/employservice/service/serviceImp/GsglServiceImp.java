@@ -26,14 +26,16 @@ public class GsglServiceImp implements GsglService {
 
     //查询总记录数
     @Override
-    public int findTotalRecord() {
-        return gsglDao.totalRecord();
+    public int findTotalRecord(String company_account, String company_name) {
+        return gsglDao.totalRecord(company_account,company_name);
     }
+
+
 
     //按条件查询公司
     @Override
-    public List<Company> queryCompanyByCritria(String company_account, String company_name) {
-        return gsglDao.queryCompanyByCritria(company_account,company_name);
+    public List<Company> queryCompanyByCritria(String company_account, String company_name,int pageNow,int pageSize) {
+        return gsglDao.queryCompanyByCritria(company_account,company_name,pageNow,pageSize);
     }
 
     //删除记录
@@ -45,6 +47,12 @@ public class GsglServiceImp implements GsglService {
     @Override
     public boolean modCompany(Company company) {
         return gsglDao.modCompany(company);
+    }
+
+    //按编号查公司
+    @Override
+    public Company findCompanyById(int id) {
+        return gsglDao.findCompanyById(id);
     }
 
 

@@ -21,13 +21,18 @@ public class SjzdServiceImp implements SjzdService {
     }
 
     @Override
-    public int findTotalRecord() {
-        return sjzdDao.totalRecord();
+    public int findTotalRecord(Integer sortInt) {
+        return sjzdDao.totalRecord(sortInt);
     }
 
+//    @Override
+//    public int findTotalRecordByCritria(int sortInt) {
+//        return sjzdDao.totalRecordByCritria(sortInt);
+//    }
+
     @Override
-    public List<Sjzd> queryDataByCritria(int sortInt) {
-        return sjzdDao.queryDataByCritria(sortInt);
+    public List<Sjzd> queryDataByCritria(int sortInt,int pageNow,int pageSize) {
+        return sjzdDao.queryDataByCritria(sortInt,pageNow,pageSize);
     }
 
     @Override

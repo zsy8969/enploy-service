@@ -117,10 +117,10 @@ function doDBClick(url,operator,type) {
               <td nowrap width="45%" align="center"> 当前第${pageNow}页 共${totalRecord}记录 分${totalPages}页显示 </td>
               <td nowrap width="55%" align="right"><input type="hidden" name="currentPage" value="1">
                   <input type="hidden" name="paginationAction" value="">
-                  <img src="../image/First_no.gif" alt="第一页" width="18" height="13" border="0" onclick="window.location.href='../houtai/gsglSvl?reqType=allCompany&pageNow=1'">&nbsp;&nbsp;&nbsp;
-                  <img src="../image/Previous_no.gif" alt="上一页" width="14" height="13" border="0" onclick="window.location.href='../houtai/gsglSvl?reqType=allCompany&pageNow=${pageNow-1}'">&nbsp;&nbsp;&nbsp;
+                  <img src="../image/First_no.gif" alt="第一页" width="18" height="13" border="0" onclick="window.location.href='../houtai/gsglSvl?reqType=queryCompany&pageNow=1&queryAccount=${queryAccount}&queryName=${queryName}'">&nbsp;&nbsp;&nbsp;
+                  <img src="../image/Previous_no.gif" alt="上一页" width="14" height="13" border="0" onclick="window.location.href='../houtai/gsglSvl?reqType=queryCompany&pageNow=${pageNow-1}&queryAccount=${queryAccount}&queryName=${queryName}'">&nbsp;&nbsp;&nbsp;
                   <img src="../image/Next_no.gif" alt="下一页" width="14" height="13" border="0" onclick="lastPage()">&nbsp;&nbsp;&nbsp;
-                  <img src="../image/Last_no.gif" alt="最后一页" width="18" height="13" border="0" onclick="window.location.href='../houtai/gsglSvl?reqType=allCompany&pageNow=${totalPages}'">&nbsp;&nbsp;&nbsp;
+                  <img src="../image/Last_no.gif" alt="最后一页" width="18" height="13" border="0" onclick="window.location.href='../houtai/gsglSvl?reqType=queryCompany&pageNow=${totalPages}&queryAccount=${queryAccount}&queryName=${queryName}'">&nbsp;&nbsp;&nbsp;
                   <a href="javascript:gotoPage()">前往</a>
                   <input type=text size='4' onlytype='int' onfocus='checkTextBoxInput()' id='pageSelect' value=''/>
                 页 </td>
@@ -136,9 +136,9 @@ function doDBClick(url,operator,type) {
     function gotoPage() {
         var page=document.getElementById("pageSelect").value;
         if (page != 0) {
-            window.location.href="${pageContext.request.contextPath}/houtai/gsglSvl?reqType=allCompany&pageNow="+page;
+            window.location.href="${pageContext.request.contextPath}/houtai/gsglSvl?reqType=queryCompany&queryAccount=${queryAccount}&queryName=${queryName}&pageNow="+page;
         }else {
-            window.location.href="${pageContext.request.contextPath}/houtai/gsglSvl?reqType=allCompany&pageNow="+${pageNow};
+            window.location.href="${pageContext.request.contextPath}/houtai/gsglSvl?reqType=queryCompany&queryAccount=${queryAccount}&queryName=${queryName}&pageNow="+${pageNow};
         }
     }
 
@@ -149,7 +149,7 @@ function doDBClick(url,operator,type) {
         if (pageNow == totalPages) {
             window.alert("最后一页了！");
         }else {
-            window.location.href="../houtai/gsglSvl?reqType=allCompany&pageNow=${pageNow+1}";
+            window.location.href="../houtai/gsglSvl?reqType=queryCompany&pageNow=${pageNow+1}&queryAccount=${queryAccount}&queryName=${queryName}";
         }
     }
 </script>

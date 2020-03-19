@@ -15,6 +15,7 @@
         <filter-name>EncodingFilter</filter-name>
         <servlet-name>GsglServlet</servlet-name>
         <servlet-name>SjzdServlet</servlet-name>
+        <servlet-name>XfglServlet</servlet-name>
     </filter-mapping>
 </web-app>
 

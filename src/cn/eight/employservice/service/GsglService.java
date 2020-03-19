@@ -14,11 +14,13 @@ public interface GsglService {
     //查询所有公司
     List<Company> queryAllCompany(int pageNow,int pageSize);
     //记录总数量
-    int findTotalRecord();
+    int findTotalRecord(String company_account, String company_name);
     //按条件查询公司
-    List<Company> queryCompanyByCritria(String company_account,String company_name);
+    List<Company> queryCompanyByCritria(String company_account,String company_name,int pageNow,int pageSize);
     //删除记录
     boolean removeCompany(String[] ids);
     //修改记录
     boolean modCompany(Company company);
+    //通过公司编号查询公司
+    Company findCompanyById(int id);
 }

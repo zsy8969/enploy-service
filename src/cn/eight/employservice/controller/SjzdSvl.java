@@ -17,7 +17,7 @@ import java.util.List;
  * @author 瞿琮
  * @create 2020-03-18 10:26
  */
-@WebServlet(name = "SjzdServlet",urlPatterns = "/houtai/sjzdSvl",initParams = {@WebInitParam(name = "pageSize",value = "10")})
+@WebServlet(name = "SjzdServlet",urlPatterns = "/houtai/sjzdSvl",initParams = {@WebInitParam(name = "pageSize",value = "2")})
 public class SjzdSvl extends HttpServlet {
 
     private SjzdService sjzdService = new SjzdServiceImp();
@@ -29,7 +29,7 @@ public class SjzdSvl extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String reqType = request.getParameter("reqType");
         if (reqType.equals("queryAll")){
-            queryAllData(request,response,-1,null);
+            queryAllData(request,response,-1);
         }else if (reqType.equals("queryByCritria")){
             queryByCritria(request,response);
         }else if(reqType.equals("add")){
@@ -53,7 +53,7 @@ public class SjzdSvl extends HttpServlet {
         boolean result = sjzdService.modData(data);
         if (result){
             try {
-                queryAllData(request,response,pageNow,null);
+                queryAllData(request,response,pageNow);
             } catch (ServletException e) {
                 e.printStackTrace();
             } catch (IOException e) {
@@ -81,7 +81,7 @@ public class SjzdSvl extends HttpServlet {
             boolean result = sjzdService.removeData(ids);
             if (result){
                 try {
-                    queryAllData(request,response,pageNow,null);
+                    queryAllData(request,response,pageNow);
                 } catch (ServletException e) {
                     e.printStackTrace();
                 } catch (IOException e) {
@@ -107,7 +107,7 @@ public class SjzdSvl extends HttpServlet {
         String remarks = request.getParameter("remarks");
         int pageSize = Integer.valueOf(getServletConfig().getInitParameter("pageSize"));
         //得到总记录数
-        int totalRecord = sjzdService.findTotalRecord();
+        int totalRecord = sjzdService.findTotalRecord(null);
         //总页数
         int totalPages=0;
         if (totalRecord%pageSize==0){
@@ -129,7 +129,7 @@ public class SjzdSvl extends HttpServlet {
             boolean result = sjzdService.addData(data);
             if (result){
                 try {
-                    queryAllData(request,response,totalPages,null);//跳到最后一页
+                    queryAllData(request,response,totalPages);//跳到最后一页
                 } catch (ServletException e) {
                     e.printStackTrace();
                 } catch (IOException e) {
@@ -148,11 +148,16 @@ public class SjzdSvl extends HttpServlet {
     }
 
     //按条件查询
-    private void queryByCritria(HttpServletRequest request, HttpServletResponse response) {
+    private void queryByCritria(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         int sortInt = Integer.valueOf(request.getParameter("selectSort"));
+        int pageSize = Integer.valueOf(getServletConfig().getInitParameter("pageSize"));
+        int pageNow = Integer.valueOf(request.getParameter("pageNow"));
+        if (pageNow<1){
+            pageNow=1;
+        }
 
-        List<Sjzd> datasList = sjzdService.queryDataByCritria(sortInt);
+        List<Sjzd> datasList = sjzdService.queryDataByCritria(sortInt,pageNow,pageSize);
         if (datasList.isEmpty()){
             try {
                 response.getWriter().print("<script>window.alert('无该记录！');window.history.back()</script>");
@@ -161,19 +166,35 @@ public class SjzdSvl extends HttpServlet {
                 e.printStackTrace();
             }
         }else {
-            try {
-                queryAllData(request,response,1,datasList);
-            } catch (ServletException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
+            //根据数字判断类型
+            for (int i = 0; i < datasList.size(); i++) {
+                Sjzd datas = datasList.get(i);
+                datas.sortInttoStr(datas);
             }
+
+            //总记录数
+            int totalRecordByCritria = sjzdService.findTotalRecord(sortInt);
+            //总页数
+            int totalPages;
+            if (totalRecordByCritria%pageSize==0){
+                totalPages=totalRecordByCritria/pageSize;
+            }else {
+                totalPages=totalRecordByCritria/pageSize+1;
+            }
+
+            request.setAttribute("datasList",datasList);
+            request.setAttribute("pageNow",pageNow);
+            request.setAttribute("totalRecord",totalRecordByCritria);
+            request.setAttribute("totalPages",totalPages);
+            request.setAttribute("sortInt",sortInt);
+
+            request.getRequestDispatcher("ny/xtgl/basedate_cx.jsp").forward(request,response);
         }
 
     }
 
     //查询所有记录
-    private void queryAllData(HttpServletRequest request, HttpServletResponse response,int update_page,List<Sjzd> list) throws ServletException, IOException {
+    private void queryAllData(HttpServletRequest request, HttpServletResponse response,int update_page) throws ServletException, IOException {
         int pageNow;
 
         if (update_page!=-1){
@@ -187,34 +208,16 @@ public class SjzdSvl extends HttpServlet {
         //取pageSize
         int pageSize = Integer.valueOf(getServletConfig().getInitParameter("pageSize"));
 
-        List<Sjzd> allDataList=null;
-        if (list==null){
-           allDataList  = sjzdService.queryAllData(pageNow, pageSize);
-        }else {
-            allDataList=list;
-        }
+        List<Sjzd> allDataList = sjzdService.queryAllData(pageNow, pageSize);
+
 
         //根据数字判断类型
         for (int i = 0; i < allDataList.size(); i++) {
             Sjzd datas = allDataList.get(i);
-            if (datas.getSortInt()==1){
-                datas.setSortStr("教育程度");
-            }else if (datas.getSortInt()==2){
-                datas.setSortStr("爱好");
-            }else if (datas.getSortInt()==3){
-                datas.setSortStr("语言");
-            }else if (datas.getSortInt()==4){
-                datas.setSortStr("证照状况");
-            }else if (datas.getSortInt()==5){
-                datas.setSortStr("体检情况");
-            }else if (datas.getSortInt()==6){
-                datas.setSortStr("个人技能");
-            }else if (datas.getSortInt()==7){
-                datas.setSortStr("雇用类型");
-            }
+            datas.sortInttoStr(datas);
         }
         //总记录数
-        int totalRecord = sjzdService.findTotalRecord();
+        int totalRecord = sjzdService.findTotalRecord(null);
         //总页数
         int totalPages;
         if (totalRecord%pageSize==0){

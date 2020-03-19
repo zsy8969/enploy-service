@@ -12,9 +12,11 @@ public interface SjzdService {
     //查询所有记录
     List<Sjzd> queryAllData(int pageNow,int pageSize);
     //查询总记录条数
-    int findTotalRecord();
+    int findTotalRecord(Integer sortInt);
+    //按条件查询的记录数量
+    //int findTotalRecordByCritria(int sortInt);
     //按条件查询
-    List<Sjzd> queryDataByCritria(int sortInt);
+    List<Sjzd> queryDataByCritria(int sortInt,int pageNow,int pageSize);
     //新增记录
     boolean addData(Sjzd date);
     //删除记录

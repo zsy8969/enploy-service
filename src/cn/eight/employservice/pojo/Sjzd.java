@@ -60,4 +60,23 @@ public class Sjzd {
     public void setSortStr(String sortStr) {
         this.sortStr = sortStr;
     }
+
+    //根据数字判断类型
+    public void sortInttoStr(Sjzd datas){
+        if (datas.getSortInt()==1){
+            datas.setSortStr("教育程度");
+        }else if (datas.getSortInt()==2){
+            datas.setSortStr("爱好");
+        }else if (datas.getSortInt()==3){
+            datas.setSortStr("语言");
+        }else if (datas.getSortInt()==4){
+            datas.setSortStr("证照状况");
+        }else if (datas.getSortInt()==5){
+            datas.setSortStr("体检情况");
+        }else if (datas.getSortInt()==6){
+            datas.setSortStr("个人技能");
+        }else if (datas.getSortInt()==7){
+            datas.setSortStr("雇用类型");
+        }
+    }
 }

@@ -46,10 +46,16 @@ public class SjzdDao {
         return resultList;
     }
 
-    //中记录数
+
     //得到总记录数
-    public int totalRecord(){
-        String sql="select count(*) from sjzd";
+    public int totalRecord(Integer sortInt){
+        String sql;
+        if (sortInt==null){
+            sql="select count(*) from sjzd";
+        }else {
+            sql="select count(*) from sjzd where sort="+sortInt;
+        }
+
         Connection con = DbPool.getConnection();
         PreparedStatement pst=null;
         ResultSet rs =null;
@@ -68,19 +74,40 @@ public class SjzdDao {
         return result;
     }
 
-    //按条件记录
-    public List<Sjzd> queryDataByCritria(int sortInt){
+    //得到条件查询总记录数
+    /*public int totalRecordByCritria(int sortInt){
+        String sql="select count(*) from sjzd where sort="+sortInt;
+        Connection con = DbPool.getConnection();
+        PreparedStatement pst=null;
+        ResultSet rs =null;
+        int result=0;
+        try {
+            pst = con.prepareStatement(sql);
+            rs = basicDao.execQuery(con, pst, null);
+            while (rs!=null&&rs.next()){
+                result=rs.getInt(1);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            basicDao.releaseResourse(rs,pst,con);
+        }
+        return result;
+    }*/
+
+    //按条件查询记录
+    public List<Sjzd> queryDataByCritria(int sortInt,int pageNow,int pageSize){
 
         List<Sjzd> resultList=new ArrayList<>();
 
-        String sql="select * from sjzd where sort="+sortInt;
+        String sql="select * from sjzd where sort="+sortInt+" limit ?,?";
 
         Connection con = DbPool.getConnection();
         PreparedStatement pst=null;
         ResultSet rs=null;
         try {
             pst = con.prepareStatement(sql);
-            rs = basicDao.execQuery(con, pst, null);
+            rs = basicDao.execQuery(con, pst,(pageNow-1)*pageSize,pageSize);
             while (rs!=null&&rs.next()){
                 Sjzd sjzd=new Sjzd();
                 sjzd.setId(rs.getInt(1));
