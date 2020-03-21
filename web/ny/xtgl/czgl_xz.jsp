@@ -1,3 +1,5 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <link href="../css/index.css" rel="stylesheet" type="text/css">
 <html>
 <style type="text/css">
@@ -28,7 +30,7 @@ function doDBClick(url,operator,type) {
 
 <table width="100%"  border="0" cellpadding="0" cellspacing="0" bordercolor="#FFFFFF" class="where">
   <tr>
-    <td>&nbsp;&nbsp;¡ù&nbsp;ÄúµÄÎ»ÖÃ£ºÎÒµÄ×ÀÃæ--&gt;ÏµÍ³¹ÜÀí--&gt;³äÖµ¹ÜÀí</td>
+    <td>&nbsp;&nbsp;â€»&nbsp;æ‚¨çš„ä½ç½®ï¼šæˆ‘çš„æ¡Œé¢--&gt;ç³»ç»Ÿç®¡ç†--&gt;å……å€¼ç®¡ç†</td>
     <td align="right">&nbsp;</td>
   </tr>
 </table>
@@ -37,36 +39,40 @@ function doDBClick(url,operator,type) {
 
   <table width="79%" height="80" border="0" align="center" cellpadding="0" cellspacing="0" >
     <tr>
-      <td width="67%" height="40" align="center" nowrap class="MENU_line1">³ä Öµ ½É ·Ñ</td>
+      <td width="67%" height="40" align="center" nowrap class="MENU_line1">å…… å€¼ ç¼´ è´¹</td>
     </tr>
     <tr>
       <td align="right" nowrap class="MENU_line1 STYLE2">&nbsp;</td>
     </tr>
   </table>
-  
+  <form method="post" action="${pageContext.request.contextPath}//ny/employersvl">
+    <input type="hidden" name="reqType" value="rechargerecord">
+<input type="hidden" name="company_id" value="${param.company_id}">
   <table width="79%" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#bdc7d3" class="text_lb">
     <tr bgcolor="#FFFFFF">
-      <td width="15%" align="right" bgcolor="#FFFFFF"><strong>³äÖµÕÊ»§£º</strong></td>
-      <td width="20%">Ç§¸£¼ÒÕş</td>
-      <td width="25%" align="right"><strong>³äÖµ½ğ¶î£º</strong></td>
+      <td width="15%" align="right" bgcolor="#FFFFFF"><strong>å……å€¼å¸æˆ·ï¼š</strong></td>
+      <td width="20%">${param.name}</td>
+      <td width="25%" align="right"><strong>å……å€¼é‡‘é¢ï¼š</strong></td>
       <td width="40%"><input name="textarea4" type="text" id="textarea4" value="" size="12" class="pi">
         <span class="text"><span class="STYLE3">*
       </span></span></td>
     </tr>
     <tr bgcolor="#FFFFFF">
-      <td width="15%" height="79" align="right"><strong>±¸×¢£º</strong></td>
+      <td width="15%" height="79" align="right"><strong>å¤‡æ³¨ï¼š</strong></td>
       <td colspan="3"><textarea name="textarea35" id="textarea35" cols="60" rows="5" ></textarea></td>
     </tr>
   </table>
+
 <br>
 <table width="96%" height="30" border="0" align="center" cellpadding="0" cellspacing="0" >
   <tr>
     <td width="67%" align="center" class="text" nowrap><span class="STYLE3">
-      <input type="submit" name="searchbtn3" value="±£  ´æ" class="button_new" onClick="javascript:alert('³äÖµ³É¹¦£¡');history.back();">
-      <input type="submit" name="searchbtn3" value="·µ  »Ø" class="button_new"onClick="javascript:history.back();" >
+      <input type="submit" name="searchbtn3" value="ä¿  å­˜" class="button_new" onClick="javascript:alert('å……å€¼æˆåŠŸï¼');history.back();">
+      <input type="button" name="searchbtn3" value="è¿”  å›" class="button_new"onClick="javascript:history.back();" >
       <input type="hidden" name="mod" value="no">
 &nbsp;&nbsp; </span></td>
   </tr>
 </table>
+  </form>
 </body>
 </html>

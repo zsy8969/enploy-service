@@ -1,6 +1,7 @@
 package cn.eight.employservice.pojo;
 
 public class Employer {
+    private String emp_id;
     private String com_id;
     private String name;
     private String sex;
@@ -30,7 +31,45 @@ public class Employer {
     private Float high_price;
     private Float low_price;
     private String remark;
+    private Integer index = 0;
 
+    public Employer(String name, String sex, String age, String nation, String address, String edu, String idcard, String workunit, String occ, String contractid, String contracttime, String mphone, String phone, String resaddress, String servaddress, String fam_address, String fam_people, String com_request, String fam_area, String fam_diet, String fam_other, String agent, String reg_time, String remark,String emp_id) {
+        this.name = name;
+        this.sex = sex;
+        this.age = age;
+        this.nation = nation;
+        this.address = address;
+        this.edu = edu;
+        this.idcard = idcard;
+        this.workunit = workunit;
+        this.occ = occ;
+        this.contractid = contractid;
+        this.contracttime = contracttime;
+        this.mphone = mphone;
+        this.phone = phone;
+        this.resaddress = resaddress;
+        this.servaddress = servaddress;
+        this.fam_address = fam_address;
+        this.fam_people = fam_people;
+        this.com_request = com_request;
+        this.fam_area = fam_area;
+        this.fam_diet = fam_diet;
+        this.fam_other = fam_other;
+        this.agent = agent;
+        this.reg_time = reg_time;
+        this.remark = remark;
+        this.emp_id = emp_id;
+    }
+
+    public Employer(String name, String sex, String phone, String com_request) {
+        this.name = name;
+        this.sex = sex;
+        this.phone = phone;
+        this.com_request = com_request;
+    }
+
+    public Employer() {
+    }
 
     public Employer(String com_id, String name, String sex, String age, String nation, String address, String edu, String idcard, String workunit, String occ, String contractid, String contracttime, String mphone, String phone, String nowaddress, String resaddress, String servaddress, String fam_address, String fam_people, String com_request, String fam_content, String fam_area, String fam_diet, String fam_other, String agent, String reg_time, Float high_price, Float low_price, String remark) {
         this.com_id = com_id;
@@ -64,6 +103,21 @@ public class Employer {
         this.remark = remark;
     }
 
+    public Integer getIndex() {
+        return index;
+    }
+
+    public void setIndex(Integer index) {
+        this.index = index;
+    }
+
+    public String getEmp_id() {
+        return emp_id;
+    }
+
+    public void setEmp_id(String emp_id) {
+        this.emp_id = emp_id;
+    }
 
     public String getCom_id() {
         return com_id;

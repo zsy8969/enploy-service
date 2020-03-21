@@ -47,6 +47,7 @@ function doDBClick(url,operator,type) {
 <br>
 
 <form action="${pageContext.request.contextPath}/ny/employersvl" method="post" name="employerinfo">
+    <input type="hidden" name="reqType" value="addEmployer">
   <table width="96%" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#bdc7d3" class="text_lb">
     <tr>
       <td width="10%" align="right" bgcolor="#FFFFFF">姓名：</td>
@@ -172,8 +173,8 @@ function doDBClick(url,operator,type) {
   </table>
 <table width="96%" height="30" border="0" align="center" cellpadding="0" cellspacing="0" >
   <tr>
-    <td width="67%" align="center" class="text" nowrap><input type="submit" name="searchbtn3" value="保  存" class="button_new" onClick="javascript:location.href='gzxx.htm'">
-      <input type="button" name="searchbtn3" value="返  回" class="button_new"onClick="javascript:location.href='gzxx.htm'" >
+    <td width="67%" align="center" class="text" nowrap><input type="submit" name="searchbtn3" value="保  存" class="button_new" onClick="javascript:location.href='gzxx.jsp'">
+      <input type="button" name="searchbtn3" value="返  回" class="button_new"onClick="javascript:location.href='gzxx.jsp'" >
       <input type="hidden" name="mod" value="no">
     &nbsp;&nbsp; </td>
   </tr>
