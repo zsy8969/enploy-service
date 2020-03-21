@@ -89,12 +89,16 @@ public class EmployerSvl extends HttpServlet {
         request.getRequestDispatcher("/ny/xtgl/xfcx.jsp").forward(request,response);
     }
 
+
+    //查询消费记录
     private void queryCash(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<QueryCash> queryCashes = service.queryCash();
         request.setAttribute("queryCashes",queryCashes);
         request.getRequestDispatcher("/ny/xtgl/xfcx.jsp").forward(request,response);
     }
 
+
+    //添加充值记录
     private void rechargeRecord(HttpServletRequest request, HttpServletResponse response) {
         String company_id = request.getParameter("company_id");
         String money = request.getParameter("textarea4");
@@ -115,6 +119,7 @@ public class EmployerSvl extends HttpServlet {
         request.getRequestDispatcher("/ny/xtgl/czgl.jsp").forward(request,response);
     }
 
+    //查询工人信息
     private void queryWorker(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String name = request.getParameter("name").trim();
         String sex = request.getParameter("sex");
@@ -183,6 +188,8 @@ public class EmployerSvl extends HttpServlet {
 
     }
 
+
+    //雇主id查询雇主信息
     private void updateEmpAll(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String emp_id = request.getParameter("emp_id");
         List<Employer> employers = service.queryEmpAll(emp_id);
@@ -245,6 +252,8 @@ public class EmployerSvl extends HttpServlet {
         request.getRequestDispatcher("/ny/ywgl/ddgl_xg.jsp").forward(request,response);
     }
 
+
+    //查询订单详细信息
     private void queryDealAll(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String dealid = request.getParameter("dealid");
         List<Object> list = service.queryDealAll(dealid);
