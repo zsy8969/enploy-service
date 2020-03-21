@@ -37,9 +37,9 @@ function doDBClick(url,operator,type) {
   <table width="96%" height="30" border="0" align="center" cellpadding="0" cellspacing="0" class="MENU_line">
     <tr>
       <td width="67%" align="right" class="text" nowrap>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;日期：
-        <input type="text" name="searchName2" maxlength="20" size="12"  class="input">
+        <input type="text" name="searchName2" maxlength="20" size="12" value="${startTime}" class="input">
         到
-        <input type="text" name="searchName4" maxlength="20" size="12"  class="input">
+        <input type="text" name="searchName4" maxlength="20" size="12" value="${endTime}" class="input">
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <input type="button" name="searchbtn" value="查  询" onclick="queryTime()" class="button_new">
       &nbsp;&nbsp; </td>
@@ -58,7 +58,7 @@ function doDBClick(url,operator,type) {
       <td width="21%" align="center" nowrap id=".register" ><strong>所属公司</strong></td>
       <td width="14%" align="center" nowrap id=".submit_date" ><strong>操作</strong></td>
     </tr>
-      <c:forEach items="${dealList}" var="deals">
+      <c:forEach items="${dealListByTime}" var="deals">
     <tr align="center" class="td2"  onmouseover="javascript:changeBgColorOnMouseOver(this);" onMouseOut="javascript:changeBgColorOnMouseOut(this);" onDblClick="doDBClick('bl.htm',true,'2');">
       <td nowrap align="center" width="5%">${deals.dealId} </td>
       <td align="center" nowrap>${deals.employerName}</td>
@@ -83,10 +83,10 @@ function doDBClick(url,operator,type) {
               <td nowrap width="45%" align="center"> 当前第${pageNow}页 共${totalRecord}记录 分${totalPages}页显示 </td>
               <td nowrap width="55%" align="right"><input type="hidden" name="currentPage" value="1">
                   <input type="hidden" name="paginationAction" value="">
-                  <img src="../image/First_no.gif" alt="第一页" width="18" height="13" border="0" onclick="location.href='../houtai/sfglSvl?reqType=queryAll&pageNow=1'">&nbsp;&nbsp;&nbsp;
-                  <img src="../image/Previous_no.gif" alt="上一页" width="14" height="13" border="0" onclick="location.href='../houtai/sfglSvl?reqType=queryAll&pageNow=${pageNow-1}'">&nbsp;&nbsp;&nbsp;
+                  <img src="../image/First_no.gif" alt="第一页" width="18" height="13" border="0" onclick="location.href='../houtai/sfglSvl?reqType=queryByCritria&pageNow=1&searchName2=${startTime}&searchName4=${endTime}'">&nbsp;&nbsp;&nbsp;
+                  <img src="../image/Previous_no.gif" alt="上一页" width="14" height="13" border="0" onclick="location.href='../houtai/sfglSvl?reqType=queryByCritria&pageNow=${pageNow-1}&searchName2=${startTime}&searchName4=${endTime}'">&nbsp;&nbsp;&nbsp;
                   <img src="../image/Next_no.gif" alt="下一页" width="14" height="13" border="0" onclick="lastPage()">&nbsp;&nbsp;&nbsp;
-                  <img src="../image/Last_no.gif" alt="最后一页" width="18" height="13" border="0" onclick="location.href='../houtai/sfglSvl?reqType=queryAll&pageNow=${totalPages}'">&nbsp;&nbsp;&nbsp;
+                  <img src="../image/Last_no.gif" alt="最后一页" width="18" height="13" border="0" onclick="location.href='../houtai/sfglSvl?reqType=queryByCritria&pageNow=${totalPages}&searchName2=${startTime}&searchName4=${endTime}'">&nbsp;&nbsp;&nbsp;
                   <a href="javascript:gotoPage()"  oncontextmenu="return false" onClick="if(this.document.AwaitForm.pageSelect.value==''){ alert('页码必须输入');return false;}
  else {this.document.AwaitForm.paginationAction.value='gotoPage';}">前往</a>
                   <input id="pageSelect" type=text size='4' onlytype='int' onfocus='checkTextBoxInput()' name='pageSelect' />
@@ -103,9 +103,9 @@ function doDBClick(url,operator,type) {
     function gotoPage() {
         var page=document.getElementById("pageSelect").value;
         if (page != 0) {
-            window.location.href="${pageContext.request.contextPath}/houtai/sfglSvl?reqType=queryAll&pageNow="+page;
+            window.location.href="${pageContext.request.contextPath}/houtai/sfglSvl?reqType=queryByCritria&pageNow="+page+"&searchName2=${startTime}&searchName4=${endTime}";
         }else {
-            window.location.href="${pageContext.request.contextPath}/houtai/sfglSvl?reqType=queryAll&pageNow="+${pageNow};
+            window.location.href="${pageContext.request.contextPath}/houtai/sfglSvl?reqType=queryByCritria&pageNow=${pageNow}&searchName2=${startTime}&searchName4=${endTime}";
         }
     }
 
@@ -116,7 +116,7 @@ function doDBClick(url,operator,type) {
         if (pageNow == totalPages) {
             window.alert("最后一页了！");
         }else {
-            window.location.href="../houtai/sfglSvl?reqType=queryAll&pageNow=${pageNow+1}";
+            window.location.href="../houtai/sfglSvl?reqType=queryByCritria&pageNow=${pageNow+1}&searchName2=${startTime}&searchName4=${endTime}";
         }
     }
 </script>

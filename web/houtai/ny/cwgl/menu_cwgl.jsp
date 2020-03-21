@@ -111,7 +111,7 @@ body {
 <table width="100%"  border="0" align="center" cellpadding="0" cellspacing="0"  id="menutd">
   <tr>
     <td  width="14"   class="Menu_OutTd"  id="menutd1">&nbsp;</td>
-    <td  width="70" nowrap id="menubar_4"   class="Menu_OutTd">|<a href="sfgl.jsp" target="main"> 收费管理</a></td>
+    <td  width="70" nowrap id="menubar_4"   class="Menu_OutTd">|<a href="${pageContext.request.contextPath}/houtai/sfglSvl?reqType=queryAll&pageNow=1" target="main"> 收费管理</a></td>
     <td  width="70" nowrap id="menubar_5"   class="Menu_OutTd">|<a href="${pageContext.request.contextPath}/houtai/xfglSvl?reqType=queryAll&pageNow=1" target="main"> 消费管理</a></td>
     <td width="676"  nowrap align="right" class="Menu_OutTd"  >&nbsp;</td>
   </tr>

@@ -16,6 +16,7 @@
         <servlet-name>GsglServlet</servlet-name>
         <servlet-name>SjzdServlet</servlet-name>
         <servlet-name>XfglServlet</servlet-name>
+        <servlet-name>SfglServlet</servlet-name>
     </filter-mapping>
 </web-app>
 

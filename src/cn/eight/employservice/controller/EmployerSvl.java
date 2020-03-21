@@ -59,7 +59,7 @@ public class EmployerSvl extends HttpServlet {
             comrequest += com_request[i]+",";
         }
         comrequest=comrequest.substring(0,comrequest.length()-1);
-        Employer employer = new Employer(null,name,sex,age,nation,address,edu,idcard,workunit,occ,contractid,contracttime,mphone,phone,nowaddress,resaddress,servaddress,fam_address,fam_people,comrequest,fam_content,fam_area,fam_diet,fam_other,agent,reg_time,high_price,low_price,remark);
+        Employer employer = new Employer(null,name,sex,Integer.valueOf(age),nation,address,edu,idcard,workunit,occ,contractid,contracttime,mphone,phone,nowaddress,resaddress,servaddress,fam_address,fam_people,comrequest,fam_content,fam_area,fam_diet,fam_other,agent,reg_time,high_price,low_price,remark);
         boolean result = service.addEmployer(employer);
         PrintWriter writer = response.getWriter();
         if (result){

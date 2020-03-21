@@ -2,9 +2,13 @@
 <project version="4">
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/web/houtai/ny/cwgl/bbcx.jsp" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/web/houtai/ny/cwgl/ckdd.jsp" charset="GBK" />
     <file url="file://$PROJECT_DIR$/web/houtai/ny/cwgl/sfgl.jsp" charset="GBK" />
     <file url="file://$PROJECT_DIR$/web/houtai/ny/cwgl/sfgl_ck.htm" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/web/houtai/ny/cwgl/sfgl_cx.jsp" charset="GBK" />
     <file url="file://$PROJECT_DIR$/web/houtai/ny/cwgl/xfgl_cx.jsp" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/web/houtai/ny/rlzy/grxx_xg.htm" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/web/houtai/ny/rlzy/grxx_xz.htm" charset="GBK" />
     <file url="file://$PROJECT_DIR$/web/houtai/ny/xtgl/basedate_add.jsp" charset="GBK" />
     <file url="file://$PROJECT_DIR$/web/houtai/ny/xtgl/basedate_cx.jsp" charset="GBK" />
     <file url="file://$PROJECT_DIR$/web/houtai/ny/xtgl/basedate_list.jsp" charset="GBK" />
@@ -20,7 +24,10 @@
     <file url="file://$PROJECT_DIR$/web/houtai/ny/xtgl/xxsjzd.htm" charset="GBK" />
     <file url="file://$PROJECT_DIR$/web/houtai/ny/xtgl/xzry.htm" charset="GBK" />
     <file url="file://$PROJECT_DIR$/web/houtai/ny/xtgl/yhgl.htm" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/web/houtai/ny/ywgl/ddgl.htm" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/web/houtai/ny/ywgl/ddgl_xg.htm" charset="GBK" />
     <file url="file://$PROJECT_DIR$/web/houtai/ny/ywgl/ddgl_xz.htm" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/web/houtai/ny/ywgl/gzxx_xg.htm" charset="GBK" />
     <file url="file://$PROJECT_DIR$/web/houtai/ny/ywgl/ygcx.htm" charset="GBK" />
   </component>
 </project>
