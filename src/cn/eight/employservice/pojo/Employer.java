@@ -1,41 +1,77 @@
 package cn.eight.employservice.pojo;
 
 public class Employer {
-    private Integer employer_id;
-    private Integer com_id;//公司编号
+    private String emp_id;
+    private String com_id;
     private String name;
     private String sex;
-    private Integer age;
-    private String nation;//民族
-    private String address;//籍贯
-    private String edu;//学历
-    private String idcard;//身份证号
-    private String workunit;//工作单位
-    private String occ;//职业
-    private String contractid;//合同号
-    private String contracttime;//合同期限
-    private String mphone;//电话
-    private String phone;//手机
-    private String nowaddress;//住宅
-    private String resaddress;//户口所在地
-    private String servaddress;//服务处地址
-    private String fam_address;//家庭资料居住地址
-    private String fam_people;//家庭资料人数
-    private String com_request;//雇佣要求
-    private String fam_content;//家庭资料服务内容
-    private String fam_area;//家庭资料房屋面积
-    private String fam_diet;//家庭资料饮食习惯
-    private String fam_other;//家庭资料其他
-    private String agent;//经办人
-    private String reg_time;//登记时间
-    private Float high_price;//最高工资
-    private Float low_price;//最低工资
+    private String age;
+    private String nation;
+    private String address;
+    private String edu;
+    private String idcard;
+    private String workunit;
+    private String occ;
+    private String contractid;
+    private String contracttime;
+    private String mphone;
+    private String phone;
+    private String nowaddress;
+    private String resaddress;
+    private String servaddress;
+    private String fam_address;
+    private String fam_people;
+    private String com_request;
+    private String fam_content;
+    private String fam_area;
+    private String fam_diet;
+    private String fam_other;
+    private String agent;
+    private String reg_time;
+    private Float high_price;
+    private Float low_price;
     private String remark;
+    private Integer index = 0;
+
+    public Employer(String name, String sex, String age, String nation, String address, String edu, String idcard, String workunit, String occ, String contractid, String contracttime, String mphone, String phone, String resaddress, String servaddress, String fam_address, String fam_people, String com_request, String fam_area, String fam_diet, String fam_other, String agent, String reg_time, String remark,String emp_id) {
+        this.name = name;
+        this.sex = sex;
+        this.age = age;
+        this.nation = nation;
+        this.address = address;
+        this.edu = edu;
+        this.idcard = idcard;
+        this.workunit = workunit;
+        this.occ = occ;
+        this.contractid = contractid;
+        this.contracttime = contracttime;
+        this.mphone = mphone;
+        this.phone = phone;
+        this.resaddress = resaddress;
+        this.servaddress = servaddress;
+        this.fam_address = fam_address;
+        this.fam_people = fam_people;
+        this.com_request = com_request;
+        this.fam_area = fam_area;
+        this.fam_diet = fam_diet;
+        this.fam_other = fam_other;
+        this.agent = agent;
+        this.reg_time = reg_time;
+        this.remark = remark;
+        this.emp_id = emp_id;
+    }
+
+    public Employer(String name, String sex, String phone, String com_request) {
+        this.name = name;
+        this.sex = sex;
+        this.phone = phone;
+        this.com_request = com_request;
+    }
 
     public Employer() {
     }
 
-    public Employer(Integer com_id, String name, String sex, Integer age, String nation, String address, String edu, String idcard, String workunit, String occ, String contractid, String contracttime, String mphone, String phone, String nowaddress, String resaddress, String servaddress, String fam_address, String fam_people, String com_request, String fam_content, String fam_area, String fam_diet, String fam_other, String agent, String reg_time, Float high_price, Float low_price, String remark) {
+    public Employer(String com_id, String name, String sex, String age, String nation, String address, String edu, String idcard, String workunit, String occ, String contractid, String contracttime, String mphone, String phone, String nowaddress, String resaddress, String servaddress, String fam_address, String fam_people, String com_request, String fam_content, String fam_area, String fam_diet, String fam_other, String agent, String reg_time, Float high_price, Float low_price, String remark) {
         this.com_id = com_id;
         this.name = name;
         this.sex = sex;
@@ -67,19 +103,27 @@ public class Employer {
         this.remark = remark;
     }
 
-    public Integer getEmployer_id() {
-        return employer_id;
+    public Integer getIndex() {
+        return index;
     }
 
-    public void setEmployer_id(Integer employer_id) {
-        this.employer_id = employer_id;
+    public void setIndex(Integer index) {
+        this.index = index;
     }
 
-    public Integer getCom_id() {
+    public String getEmp_id() {
+        return emp_id;
+    }
+
+    public void setEmp_id(String emp_id) {
+        this.emp_id = emp_id;
+    }
+
+    public String getCom_id() {
         return com_id;
     }
 
-    public void setCom_id(Integer com_id) {
+    public void setCom_id(String com_id) {
         this.com_id = com_id;
     }
 
@@ -99,11 +143,11 @@ public class Employer {
         this.sex = sex;
     }
 
-    public Integer getAge() {
+    public String getAge() {
         return age;
     }
 
-    public void setAge(Integer age) {
+    public void setAge(String age) {
         this.age = age;
     }
 
